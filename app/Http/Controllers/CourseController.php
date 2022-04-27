@@ -7,18 +7,19 @@ use App\Http\Requests\Course\StoreRequest;
 use App\Http\Requests\Course\UpdateRequest;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class CourseController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $search = $request->get('q');
-        $data = Course::where('name', 'like', '%' . $search . '%')->paginate(2);
-        $data->appends(['q' => $search]);
-        return view('courses.index', [
-            'data' => $data,
-            'search' => $search,
-        ]);
+
+        return view('courses.index');
+    }
+
+    public function api()
+    {
+        return DataTables::of(Course::query())->make(true);
     }
 
     public function create()

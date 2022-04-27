@@ -10,6 +10,7 @@
       <!-- App css -->
       <link href="{{ asset('css/icons.min.css') }}" rel="stylesheet" type="text/css" />
       <link href="{{ asset('css/app-creative.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
+      @stack('css')
 
 </head>
 
@@ -47,6 +48,7 @@
 
       <script src="{{ asset('js/vendor.min.js') }}"></script>
       <script src="{{ asset('js/app.min.js') }}"></script>
+      @stack('js')
 
 </body>
 
